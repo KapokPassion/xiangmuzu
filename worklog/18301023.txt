@@ -1,1 +1,12 @@
-18301023 王伟安 git commit test 获取气象数据
+18301023 王伟安 
+6月29日
+配置环境 学习git操作
+听了一天感觉懵里懵懂，啥都没懂。
+6月30日
+完成commit上传  获取气象数据 安装数据分析依赖包 配置虚拟机
+安装数据分析依赖包的时候发现用pip install -i https://pypi.tuna.tsinghua.edu.cn/simple+包名
+通过使用清华的镜像能大幅提高下载速度和安装成功率
+安装虚拟机时，出现Inter VT-x禁用的问题，需要到bios系统里面开启intel virtual technology
+VMware Workstation 15 Player里没找到虚拟网络编辑器的选项，
+重新下载了VMware Workstation Pro
+获取气象数据的网站居然要翻墙...
