@@ -7,3 +7,20 @@
     问题：部分配置因环境变量的顺序导致失败（已解决），虚拟机安装因电脑原因安装失败（已解决）。
     明日计划：完成虚拟机配置，并完成小组分配任务。
                                                                               18301007 李坤
+7月1号
+     昨天VMware在官网下载的最新版本安装，最后也没查到原因，最后在https://www.duote.com/网站下载了旧版，才安装成功
+     
+     由于昨日网络原因，ubuntu下载较慢，没能完成虚拟机配置，今天上午9点30分，按照          https://blog.csdn.net/weixin_43465312/article/details/100233930网站的指导完成了虚拟机的安装。
+    
+     下一步进行，虚拟机网络配置，指令vim/etc/network/interfaces不起作用，上网查解决方法：修改后没有重启服务所有不生效，要不重启电脑，要不sudo/etc/init.d/networking restart指令，但未能解决，最后发现是 vim后边有个空格。。。经小组讨论得知修改文件保存要先按esc，然后shift+zz，
+     
+     sudo /etc/init.d/networking restart  启动失败，重启虚拟机之后还是失败。
+     sudo apt install net-tools安装失败，查了好多发现问题出在：暂时不能解析域名“cn.archive.ubuntu.com”，按照pdf重新做了一次，解决了问题。
+     
+     按pdf步骤进行网络修改  将ip里的75改为207之后，ubuntu里的有线网络消失了。。按照这个教程https://blog.csdn.net/w504007124/article/details/105219718才恢复有线网络。。
+     下午2点开始与小组开会，商讨虚拟机网络配置遗留问题，下载xshell，启动ssh服务，但貌似不会影响太多，
+     经小组讨论，我们发现要装三个虚拟机，主机和子节点，pdf里没有直接说，我们经过多方查阅和探讨才得到结论。
+     修改主机master，克隆子节点slave1与slave2。
+     用winscp转移jdk，在linux里安装jdk。
+     今晚打算，配置Spark集群。   
+                                                                               18301007 李坤
