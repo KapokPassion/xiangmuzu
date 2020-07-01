@@ -20,5 +20,8 @@ linux里改文件保存退出要输入shift+zz
 完成了hadoop、spark
 但是/home/wwa/Documents/hadoop/etc/hadoop/里没找着slaves 暂时不懂哪里有问题
 集群启动和关闭啥都没说就要编写一个启动脚本，不是很懂怎么弄，明天再说吧
-晚上实现了一下三台克隆机ping值的互通
+晚上实现了一下三台虚拟机ping值的互通
+又实现了配置SSH免验证登录，之前不懂要弄三台虚拟机所以一堆问题
+/home/wwa/Documents/hadoop/etc/hadoop/里没找着slaves 是因为hadoop3.0以后slaves更名为workers，知道改名就好办了
+现在除了集群脚本前面的工作都完成了。
 
