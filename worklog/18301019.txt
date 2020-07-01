@@ -1,3 +1,5 @@
+18301019	王澳
+
 6.29
 1.完成Python安装配置
 2.完成PyCharm安装配置
@@ -7,3 +9,14 @@
 1.下载spark和hadoop，并配置环境变量
 2.尝试下载安装虚拟机，但下载速度特慢，没能完成
 3.通过pip命令安装Python包，正在进行，通过命令行安装时一直报错，正在解决
+
+7.1上午
+1.Fatal error in launcher: Unable to create process using '"f:\program files\python.exe"  "F:\Python\Scripts\pip.exe" '
+之前执行pip一直报上面的错误，在网上查找相关教程，在执行python pip.exe install SomePackage和python -m pip install --upgrade pip这两个命令后，能够成功执行pip命令了。
+安装Python包使用的命令不是文档给出的pip install package，而是pip install --upgrade package。
+2.下载了VMware和Ubuntu，VMware已安装，虚拟机添加了，但还没有运行安装，因为显示报错，要修改BIOS。
+
+7.1下午
+1.修改BIOS中的VT，改为enable
+2.初次运行虚拟机发生不兼容问题，“VMware Workstation 与 Device/Credential Guard 不兼容.在禁用 Device/Credenti”，通过关闭“Hyper-V”，然后在“Windows PowerShell(管理员)(A)”执行“bcdedit /set hypervisorlaunchtype off”
+3.成功安装，相关配置还未开始，但已经在会议中看组员做相关操作，后续进程应该会很快。
