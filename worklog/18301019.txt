@@ -20,3 +20,9 @@
 1.修改BIOS中的VT，改为enable
 2.初次运行虚拟机发生不兼容问题，“VMware Workstation 与 Device/Credential Guard 不兼容.在禁用 Device/Credenti”，通过关闭“Hyper-V”，然后在“Windows PowerShell(管理员)(A)”执行“bcdedit /set hypervisorlaunchtype off”
 3.成功安装，相关配置还未开始，但已经在会议中看组员做相关操作，后续进程应该会很快。
+
+7.2
+1.开始Web前端开发，和周润佳、薛辉杰共同进行，先是下载安装了IDEA，在网上找了很多教程来学习，但以失败告终，教程很多，但没找到适合我们的，学了很久没学会
+2.我们转用eclipse，安装了6个插件以支持web开发Eclipse Java EE Developer Tools、Eclipse Java Web Developer Tools、Eclipse Web Developer Tools、Eclipse XML Editors and Tools、JST Server Adapters、JST Server Adapters Extentions，前四个是创建web项目的，后两个是在eclipse中添加Tomcat的
+3.下载安装了Tomcat9.0，创建了两个系统变量名，在PATH和CLASSPATH中各添加了两个变量值，然后在命令行中执行service install Tomcat9，在系统中安装Tomcat9，然后在“服务”里启动该服务。
+4.正在用eclipse的springMVC环境搭建并输出HelloWorld，还未成功。
