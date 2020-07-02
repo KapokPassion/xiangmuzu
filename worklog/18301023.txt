@@ -24,4 +24,15 @@ linux里改文件保存退出要输入shift+zz
 又实现了配置SSH免验证登录，之前不懂要弄三台虚拟机所以一堆问题
 /home/wwa/Documents/hadoop/etc/hadoop/里没找着slaves 是因为hadoop3.0以后slaves更名为workers，知道改名就好办了
 现在除了集群脚本前面的工作都完成了。
+7月2日
+学习了集群脚本的使用
+使用脚本是发现之前java版本装错了，三台机子重装
+winscp连接超时，重新给三台机子配置了连接
+三台虚拟机同时开启进行集群，电脑异常卡，第三台机子开个机都要等个七八分钟
+出现failed to launch: nice -n 0问题 在/spark/sbin/spark-config.sh 加入JAVA_HOME的路径 解决
+网络连接出现问题 考虑到可能是多次尝试集群 限制登录了 在/etc/hosts.allow上进行了修改
+集群到一半卡主了，没报错但根本不会动，尝试几次无果
+心态崩了，不搞虚拟机了
+学习ARIMA模型和基于时间序列的数据模型
+
 
