@@ -26,3 +26,9 @@
 2.我们转用eclipse，安装了6个插件以支持web开发Eclipse Java EE Developer Tools、Eclipse Java Web Developer Tools、Eclipse Web Developer Tools、Eclipse XML Editors and Tools、JST Server Adapters、JST Server Adapters Extentions，前四个是创建web项目的，后两个是在eclipse中添加Tomcat的
 3.下载安装了Tomcat9.0，创建了两个系统变量名，在PATH和CLASSPATH中各添加了两个变量值，然后在命令行中执行service install Tomcat9，在系统中安装Tomcat9，然后在“服务”里启动该服务。
 4.正在用eclipse的springMVC环境搭建并输出HelloWorld，还未成功。
+
+7.3
+1.用MyEclipse创建Web项目，通过编辑.jsp文件成功做出了登录界面
+2.还不能有效的获取客户端信息，正在测试使用@RequestMapping语句来获取，还没有成功
+3.正在学习Java Script脚本语言，通过网上的教程成功试用，具体的语句功能还不太了解
+4.计划明天实现用户登录和检查、界面跳转、获取客户端信息并作出相应显示
