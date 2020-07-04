@@ -68,3 +68,12 @@ Freq: A-DEC, dtype: float64
 明天打算看看其他时间序列预测模型，Python中9大时间序列预测模型：
 https://baijiahao.baidu.com/s?id=1624177275994868262&wfr=spider&for=pc
                                                                                  18301007李坤
+7月4号
+     由于之前大量时间浪费在了虚拟机上，为了赶上进度，时间序列模型目前只用ARIMA模型，
+不进行升级，所以今天进行python处理类，学习python文件读取写入操作https://blog.csdn.net/a575223/article/details/81669149
+写python读写函数，
+学习json文件相关知识：http://baijiahao.baidu.com/s?id=1641906235824053291&wfr=spider&for=pc
+学习python将数据转为json文件：https://blog.csdn.net/qq_36043458/article/details/93256165?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight
+由于python不熟练，导致bug很多，而且对项目的理解也不够，所以进度缓慢。
+明天开始尝试将数据传输到web网页端。
+                                                                                 18301007李坤
