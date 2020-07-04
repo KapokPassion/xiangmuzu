@@ -88,3 +88,11 @@ slave一直有问题，我们决定先放一放，虚拟机弄得时间太长了
 测试数据可以写出来，但是之前的日期数据格式导出出现了问题
 下一步主要工作是继续学习python使用，以及文件读写的完成
 18301031 周润佳
+
+7.4下午日志
+今天下午我主要进行了json文件相关学习，以及python文件传输
+son文件相关知识：http://baijiahao.baidu.com/s?id=1641906235824053291&wfr=spider&for=pc
+python将数据转为json文件：https://blog.csdn.net/qq_36043458/article/details/93256165?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight
+python真的是没学过，上午过于自大了。。。
+明天准备开始测试连接
+18301031 周润佳
