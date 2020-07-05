@@ -77,3 +77,12 @@ https://baijiahao.baidu.com/s?id=1624177275994868262&wfr=spider&for=pc
 由于python不熟练，导致bug很多，而且对项目的理解也不够，所以进度缓慢。
 明天开始尝试将数据传输到web网页端。
                                                                                  18301007李坤
+7月5号
+      将预测结果数据转换为json文件，to_json(self.data_type + '.json', date_format='iso')
+      学习python函数调用
+      python时间字符串转格式：https://www.cnblogs.com/wanderingfish/p/11496557.html
+      学习python中socket将json传送到wed端：
+https://blog.csdn.net/weixin_33810006/article/details/89834172
+https://blog.csdn.net/weixin_38645718/article/details/106844581
+     将png预测图传到wed网页失败。争取明天完成数据传输。
+                                                                                 18301007李坤
