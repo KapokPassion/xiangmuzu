@@ -1,4 +1,8 @@
 18301023 王伟安 
+
+项目组地址
+https://github.com/baixiangguo6/xiangmuzu.git
+
 6月29日
 配置环境 学习git操作
 听了一天感觉懵里懵懂，啥都没懂。
@@ -65,3 +69,10 @@ python app.py db upgrade       版本升级
 python app.py db downgrade  版本降级 降级无法删除版本号，要手动删除drop table alembic_version;
 python manage.py runserver    启动
 完成flask在网页上基于数据库的用户注册和登录
+记录下数据库操作，免得忘了
+数据库操作 
+mysql -uroot -p               登录
+create database + 库名； 创建数据库
+show tables；                  查看数据库
+use + 库名；                    进入该数据库
+select * from +类名          查看数据库中该类下信息
