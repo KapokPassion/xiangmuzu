@@ -96,3 +96,19 @@ python将数据转为json文件：https://blog.csdn.net/qq_36043458/article/deta
 python真的是没学过，上午过于自大了。。。
 明天准备开始测试连接
 18301031 周润佳
+
+7.5上午日志
+搞定了预测数据生成json格式文件的过程to_json(self.data_type + '.json', date_format='iso')
+剩下的时间一直在学python
+因为flask和python我们都没学过，学着学着我们决定分工。。。。
+我和李坤同学继续搞python文件传输，王伟安去搞flask
+18301031 周润佳
+
+7.5下午日志
+我今天下午比以往开工晚了半个小时，去预约医生了，最近身体出了点小问题，7号要做全身检查
+下午回来之后继续学习学习python函数调用
+下午主要尝试了python中socket将json传送到wed端：
+https://blog.csdn.net/weixin_33810006/article/details/89834172
+https://blog.csdn.net/weixin_38645718/article/details/106844581
+很抱歉因为我个人身体原因，我的进度主要靠加班，这两天和大家时间错开了，大家表示非常理解，我非常感谢大家
+18301031 周润佳
