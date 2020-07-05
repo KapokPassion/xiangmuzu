@@ -60,6 +60,8 @@ winscp连接超时，重新给三台机子配置了连接
 在flask中配置数据库
 成功添加数据
 python app.py db init 生成migrations文件夹
-python app.py db migrate       版本迁移
+python app.py db migrate       产生新版本文件
 python app.py db upgrade       版本升级
 python app.py db downgrade  版本降级 降级无法删除版本号，要手动删除drop table alembic_version;
+python manage.py runserver    启动
+完成flask在网页上基于数据库的用户注册和登录
