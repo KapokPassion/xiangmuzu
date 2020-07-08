@@ -97,3 +97,5 @@ json文件处理浪费了不少时间，首先是不知道python中如何读取�
 url_for('blog.register')中的   'blog.register'   使用endpoint来改变的
 网页设计基本完成，数据连接函数基本封装完成，点击事件完成
 最近基本整体都在弄项目，但是看到结果还是很有成就感的
+7月8日
+爬虫over
