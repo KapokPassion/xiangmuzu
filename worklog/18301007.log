@@ -94,7 +94,17 @@ https://blog.csdn.net/weixin_38645718/article/details/106844581
        学习flask，实现了前后端交互。但未实现前端数据展示。
        学习websocket。。。晚上继续研究。
                                                                                18301007 李坤
-7月8号
+7月7号
      学习mysql数据库使用，学习flask读取数据库操作，学习ajax。
       https://www.bilibili.com/video/BV177411j7qJ?p=9
+                                                                               18301007 李坤、
+7月8号
+      学习爬虫，从http://www.weather.com.cn/textFC/hb.shtml#0中爬取全国实时气温数据。
+      学习requests发送请求的基本使用，学习header反爬。
+      学习使用selenium爬取数据。
+      学习使用Jupyter notebook就行分块编程，成果爬取到全国各省省会的实时最高最低气温。
+      学习mysql数据库的使用 ，将数据传到数据库。
+      学习角色管理https://www.cnblogs.com/silence-cho/p/9781237.html
+      处理全国各省预测数据
+      学习easyui的使用。
                                                                                18301007 李坤
