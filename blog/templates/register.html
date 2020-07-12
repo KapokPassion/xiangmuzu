@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} 用户注册 {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <p style="color:red;">{{msg}}</p>
+    <form action="{{url_for('blog.register')}}" method="post">
+  <div class="form-group">
+    <label for="exampleInputUserName">用户名</label>
+    <input type="text" class="form-control" id="exampleInputUserName" placeholder="username" name="username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password1">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">确认密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="password2">
+  </div>
+  <button type="submit" class="btn btn-info">注册</button>
+</form>
+
+  </div>
+
+{% endblock %}
+{% block myjs %}
+<script>
+    $(document).ready(
+        function(){
+            $("#nav3").addClass('active')
+            }
+        );
+</script>
+{% endblock %}

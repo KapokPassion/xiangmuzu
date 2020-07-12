@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <img src="/static/min.png"/>
+    <div class="container">
+     <ul>
+       {% for k in load %}
+           <li>{{ k ,load[k] }}</li>
+       {% endfor %}
+     </ul>
+    </div>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;//字体大小
+	color:#333333;//表格字体颜色
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;//表格间隙
+	//border-radius: 10px 10px 10px 10px;
+}
+th {
+	background-color:#c3dde0;//表头背景颜色
+	border-width: 1px;
+	padding: 10px;
+	//border-style: solid;
+	border-color: #a9c6c9;
+	//border-radius: 10px 10px 10px 10px;
+	//border-top-left-radius: 12px;
+}
+tr {
+	background-color:#d4e3e5;//表身背景颜色
+}
+td {
+	border-width: 1px;
+	padding: 10px;//表身宽度
+	border-style: solid;
+	border-color: #a9c6c9;
+	//border-radius: 10px 10px 10px 10px;
+}
+    </style>
+
+</head>
+<nav class="navbar navbar-default">
+    <li><a href="{{url_for('blog.ceo1')}}">返回管理界面</a></li>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <center>
+                  <a class="navbar-brand" style="position:absolute;top:0;left:500px;width:900px;height:30px">CEO管理界面2</a>
+        </center>
+
+    </div>
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+        <table width="40%" style="text-align: center;" align="center" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>职务</th>
+                    <th>部门</th>
+                </tr>
+            </thead>
+            <tbody id="dataContent">
+
+            </tbody>
+        </table>
+        <br></br>
+
+<center>
+<form action="{{url_for('blog.replace')}}" method="post">
+  <div class="form-group">
+      <input type="text" name="name" placeholder="姓名" style="width:200px;height:35px">
+      <p style="color:red;">{{msg}}</p>
+  </div>
+  <div class="form-group">
+      <input type="text" name="position" placeholder="职位" style="width:200px;height:35px">
+      <p style="color:red;">{{msg1}}</p>
+  </div>
+    <input type="submit" value="确定"  id="b0" style="width:100px;height:35px">
+</form>
+</center>
+
+</body>
+<script>
+    // 作业的要求，是将改json数据，使用js的方式，渲染到表格中。
+ var tabledata = [
+
+               ];
+
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("b1").onclick = function(){
+    var id1=document.getElementById("textId1").value
+            alert(id1); 
+        }
+</script>
+<script>
+
+            function get_table(){
+                $.ajax({
+                    url:"/blog/try3",
+                    type : "POST",
+
+                    success:function(data){
+                        tabledata = data
+                        var dataContent = document.getElementById('dataContent');
+                            //获取并展示数据
+                            tabledata.forEach((value, index) => {
+                                // 向表格中插入一行
+                                var row = dataContent.insertRow();
+
+                                // 向行中插入一个单元格
+                                var idCell = row.insertCell();
+                                idCell.innerText = value.姓名;
+
+                                var nameCell = row.insertCell();
+                                nameCell.innerText = value.职务;
+
+                                var genderCell = row.insertCell();
+                                genderCell.innerText = value.部门;
+
+                            })
+                    },
+                    error:function(xhr, type, errorThrown){
+
+                    }
+                 });
+            }
+            get_table()
+</script>
+</html>

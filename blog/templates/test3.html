@@ -1,0 +1,510 @@
+{% extends 'index.html' %}
+{% block mycss %}
+<script src={{url_for('static', filename='/js/jquery-1.11.1.min.js')}}></script>
+<script src={{url_for('static', filename='/js/echarts.min.js')}}></script>
+<script src={{url_for('static', filename='/js/china.js')}}></script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+         <script type="text/javascript">
+        $(function () {
+            NOW();
+        });
+        //初始化时间控件
+        function NOW() {
+            var now = new Date();
+            var nowYear = now.getFullYear(); //年
+            var nowMonth = now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : now.getMonth(); //月
+            var nowDay = now.getDate() < 10 ? "0" + now.getDate() : now.getDate(); //日期
+            var nowHour = now.getHours() < 10 ? "0" + now.getHours() : now.getHours(); //时
+            var nowMinute = now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes(); //分
+            var nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
+            var nowTime = nowHour + ":" + nowMinute;
+
+            $("#nowDate").val(nowDate);
+            $("#nowTime").val(nowTime);
+        }
+         $(function () {
+            $("#btnNow").click(function () {
+                NOW();
+            });
+        });
+
+      </script>
+
+
+{% endblock %}
+
+{% block content %}
+<div divbiaoh="2" id="main0" style="position:absolute;display:none;border:1px solid silver;z-index: 1;">
+    <img src="/static/haha.jpg" id="jpg" style="width:1200px;height:400px;">
+
+</div>
+<a yuanyou="2" style="position:absolute;left:600px;top:100px">显示</a>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $("[yuanyou]").hover(function(){
+            showdiv(this,$(this).attr("yuanyou"));
+        },function(){
+            hidediv(this,$(this).attr("yuanyou"));
+        });
+        function showdiv(obj, yuanyou) {
+            var objDiv = $("[divbiaoh='"+yuanyou+"']");
+            $(objDiv).css("display", "block");
+            $(obj).css("cursor", "pointer");
+
+            var e = arguments.callee.caller.arguments[0] || window.event;
+var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+var x = e.pageX || e.clientX + scrollX;
+var y = e.pageY || e.clientY + scrollY;
+var top = y + 5;
+var left = x + 5;
+            $(objDiv).css({
+                'top': top + 'px',
+                'left': left + 'px'
+            });
+        }
+
+        function hidediv(obj, yuanyou) {
+            var objDiv = $("[divbiaoh='"+yuanyou+"']");
+            $(objDiv).css("display", "none");
+        }
+    </script>
+    <div >
+        <input type="button" id="btn"  value="获取今日最高温"  class="btn btn-info" />
+        <input type="button" id="btnNow" value="获取今日最低温"  class="btn btn-info" />
+    </div>
+
+<script type="text/javascript">
+    $(function(){
+        $("#btn").click(function(){
+            get_china()
+         });
+    });
+    $(function(){
+        $("#btnNow").click(function(){
+            get_china2()
+         });
+    });
+</script>
+
+
+<script></script>
+
+
+{% endblock %}
+
+{% block echart %}
+
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="position:absolute;top:70px;left:0;width:600px;height:500px"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option1 = {
+                    title: {
+                        text: '最高温度'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['实际温度','预测温度']
+                    },
+                    xAxis: [{
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    }],
+                    yAxis: {},
+                    series: [{
+                        name: '实际温度',
+                        type: 'scatter',
+                        data: [5, 20, 36, 10, 10, 20]
+                    },
+                    {
+                        name: '预测温度',
+                        type: 'scatter',
+                        data: [5, 5, 5, 5, 5, 5]
+                    }]
+                };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option1);
+    </script>
+    <script>
+    function get_max(a,b){
+        $.ajax({
+            url:"/blog/l2",
+            success:function(data){
+                a.xAxis[0].data =  data["timer"]
+                a.series[0].data =  data["maxr"]
+                a.series[1].data =  data["maxc"]
+                b.setOption(a)
+            },
+            error:function(xhr, type, errorThrown){
+
+            }
+         });
+    }
+    function get_min(a,b){
+        $.ajax({
+            url:"/blog/l2",
+            success:function(data){
+                a.xAxis[0].data =  data["timer"]
+                a.series[0].data =  data["minr"]
+                a.series[1].data =  data["minc"]
+                b.setOption(a)
+            },
+            error:function(xhr, type, errorThrown){
+
+            }
+         });
+    }
+    function get_ave(a,b){
+        $.ajax({
+            url:"/blog/l2",
+            success:function(data){
+                a.xAxis[0].data =  data["timer"]
+                a.series[0].data =  data["aver"]
+                a.series[1].data =  data["avec"]
+                b.setOption(a)
+            },
+            error:function(xhr, type, errorThrown){
+
+            }
+         });
+    }
+
+
+    function get1(a,b){
+        $.ajax({
+            url:"/blog/l2",
+            success:function(data){
+                a.xAxis[0].data =  data["time"]
+                 a.series[0].data =  data["max"]
+                 a.series[1].data =  data["min"]
+                 a.series[2].data =  data["ave"]
+                 b.setOption(a)
+            },
+            error:function(xhr, type, errorThrown){
+
+            }
+         });
+    }
+
+    </script>
+
+
+<script>
+function get_map_max(a,b,city){
+            $.ajax({
+                url:"/blog/l2",
+                type : "POST",
+                data : city,
+
+                success:function(data){
+                   a.xAxis[0].data =  data["timer"]
+                   a.series[0].data =  data["maxr"]
+                   a.series[1].data =  data["maxc"]
+                   b.setOption(a)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+
+function get_map_min(a,b,city){
+            $.ajax({
+                url:"/blog/l2",
+                type : "POST",
+                data : city,
+
+                success:function(data){
+                   a.xAxis[0].data =  data["timer"]
+                   a.series[0].data =  data["minr"]
+                   a.series[1].data =  data["minc"]
+                   b.setOption(a)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+
+function get_map_ave(a,b,city){
+            $.ajax({
+                url:"/blog/l2",
+                type : "POST",
+                data : city,
+
+                success:function(data){
+                   a.xAxis[0].data =  data["timer"]
+                   a.series[0].data =  data["aver"]
+                   a.series[1].data =  data["avec"]
+                   b.setOption(a)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+
+function get_map1(a,b,city){
+            $.ajax({
+                url:"/blog/l2",
+                type : "POST",
+                data : city,
+
+                success:function(data){
+                   a.xAxis[0].data =  data["time"]
+                   a.series[0].data =  data["max"]
+                   a.series[1].data =  data["min"]
+                   a.series[2].data =  data["ave"]
+                   b.setOption(a)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+</script>
+
+<script>
+function get_china(){
+            $.ajax({
+                url:"/blog/try",
+                type : "POST",
+
+                success:function(data){
+                    option.series[0].data = data
+                    myChart1.setOption(option)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+
+function get_china2(){
+            $.ajax({
+                url:"/blog/try2",
+                type : "POST",
+
+                success:function(data){
+                    option.series[0].data = data
+                    myChart1.setOption(option)
+                },
+                error:function(xhr, type, errorThrown){
+
+                }
+            });
+        }
+</script>
+
+
+
+<div id="container2" style="position:absolute;top:120px;left:500px;width:900px;height:900px" ></div>
+<script type="text/javascript">
+    // 全国省份列表
+    var dataMap = [{ 'name': '北京' }, { name: '天津'}, { name: '上海' }, { name: '重庆' }, { name: '河北' }, { name: '河南' }, { name: '云南' }, { name: '辽宁' }, { name: '黑龙江' }, { name: '湖南' }, { name: '安徽' }, { name: '山东' },
+    { name: '新疆' }, { name: '江苏' }, { name: '浙江' }, { name: '江西' }, { name: '湖北' }, { name: '广西' }, { name: '甘肃' }, { name: '山西' }, { name: '内蒙古' }, { name: '陕西' }, { name: '吉林' }, { name: '福建' }, { name: '贵州' },
+    { name: '广东' }, { name: '青海' }, { name: '西藏' }, { name: '四川' }, { name: '宁夏' }, { name: '海南' }, { name: '台湾' }, { name: '香港' }, { name: '澳门' }]
+
+    // 绘制图表，准备数据
+    var option = {
+        tooltip: {
+            formatter: function (params) {
+                var info = '<p style="font-size:18px">' + params.name + '</p><p style="font-size:14px"></p>'
+                return info;
+            },
+            backgroundColor: "#6495ED",//提示标签背景颜色
+            textStyle: { color: "#fff" } //提示标签字体颜色
+        },
+        visualMap:{
+            x:'center',
+            y:'bottom',
+            splitList: [{start: 0,end: 24},
+                        {start: 25,end: 26},
+                        {start: 27,end: 28},
+                        {start: 29,end: 30},
+                        {start: 30}],
+            color: ['#8A3310', '#C64918', '#E55B25', '#F2AD92' ,'#F9DCD1']
+            },
+        series: [
+            {
+                name: '中国',
+                type: 'map',
+                mapType: 'china',
+                selectedMode: 'multiple',
+                label: {
+                    normal: {
+                        show: true,//显示省份标签
+                        //textStyle:{color:"#c71585"}//省份标签字体颜色
+                    },
+                    emphasis: {
+                        show: true,//对应的鼠标悬浮效果
+                        //textStyle:{color:"#800080"}
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        borderWidth: .5,//区域边框宽度
+                        // borderColor: '#009fe8',//区域边框颜色
+                        // areaColor:"#ffefd5",//区域颜色
+                    },
+                    emphasis: {
+                        borderWidth: .5,
+                        borderColor: '#4b0082',
+                        areaColor: "#6495ED",
+                    }
+                },
+                data: dataMap
+            }
+        ]
+    };
+    //初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById('container2'));
+    //使用制定的配置项和数据显示图表
+    myChart1.setOption(option);
+
+    myChart1.on('click', function (params) {
+        for (var k = 0; k < dataMap.length; k++) {
+            if (params.name == dataMap[k].name) {
+                dataMap[k].selected = false;
+                myChart1.setOption(option);
+                break;
+            }
+        }
+        var city = params.name;
+        $('#jpg').attr('src','/static/'+city+'avg.png')
+        alert(city);
+        console.log(city)
+        get_map_max(option1,myChart,city)
+        get_map_min(option2,myChart2,city)
+        get_map1(option3,myChart3,city)
+        get_map_ave(optionx,myChartx,city)
+    });
+
+</script>
+<script>
+</script>
+
+    <div style="text-align:center;clear:both;">
+<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+<script src="/follow.js" type="text/javascript"></script>
+</div>
+
+    <div id="main1" style="position:absolute;top:70px;left:1300px;width:600px;height:500px"></div>
+    <script type="text/javascript">
+        var myChartx = echarts.init(document.getElementById('main1'));
+
+        // 指定图表的配置项和数据
+        var optionx = {
+            title: {
+                        text: '平均温'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['实际温度','预测温度']
+                    },
+                    xAxis: [{
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    }],
+                    yAxis: {},
+                    series: [{
+                        name: '实际温度',
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20]
+                    },
+                    {
+                        name: '预测温度',
+                        type: 'bar',
+                        data: [5, 5, 5, 5, 5, 5]
+                    }]
+                };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChartx.setOption(optionx);
+    </script>
+
+<div id="main2" style="position:absolute;top:570px;left:0;width:600px;height:500px"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option2 = {
+            title: {
+                        text: '最低温度'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['实际温度','预测温度']
+                    },
+                    xAxis: [{
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    }],
+                    yAxis: {},
+                    series: [{
+                        name: '实际温度',
+                        type: 'line',
+                        data: [5, 20, 36, 10, 10, 20]
+                    },
+                    {
+                        name: '预测温度',
+                        type: 'line',
+                        data: [5, 5, 5, 5, 5, 5]
+                    }]
+                };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+    </script>
+
+<div id="main3" style="position:absolute;top:570px;left:1300px;width:600px;height:500px"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart3 = echarts.init(document.getElementById('main3'));
+
+        // 指定图表的配置项和数据
+        var option3 = {
+            title: {
+                        text: '预测温度'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['最高温度','最低温度','平均温度']
+                    },
+                    xAxis: [{
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    }],
+                    yAxis: {},
+                    series: [{
+                        name: '最高温度',
+                        type: 'line',
+                        data: [5, 20, 36, 10, 10, 20]
+                    },
+                    {
+                        name: '最低温度',
+                        type: 'line',
+                        data: [5, 5, 5, 5, 5, 5]
+                    },
+                    {
+                        name: '平均温度',
+                        type: 'line',
+                        data: [5, 5, 5, 5, 5, 5]
+                    }]
+                };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart3.setOption(option3);
+    </script>
+<script>
+    get_max(option1,myChart)
+    get_min(optionx,myChartx)
+    get_ave(option2,myChart2)
+    get1(option3,myChart3)
+</script>
+<!--<input type="button" id="btn"  value="获取今日最高温"  class="btn btn-info" />-->
+
+{% endblock %}

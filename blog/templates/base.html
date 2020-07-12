@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}  首页 {% endblock %}</title>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block mycss %}  {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <h3><div id="tim" style="position:absolute;top:40px;left:1500px;width:600px;height:500px">我是时间！！！！！！！！！！！！！！！！！！！！！！！！！！！！</div></h3>
+ <script>
+    function get_time(){
+        $.ajax({
+            url:"/blog/time",
+            timeout:10000,
+            success:function(data){
+                 $("#tim").html(data)
+            },
+            error:function(xhr, type, errorThrown){
+
+            }
+         });
+    }
+    setInterval(get_time,1000)
+    get_time()
+ </script>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"  href="{{url_for('blog.map')}}">气象预测</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          {% if "username" in session %}
+              <li><a href="{{url_for('blog.sy')}}">首页</a></li>
+              <li><a href="{{url_for('blog.guanli')}}">管理</a></li>
+              <li><a href="{{url_for('blog.logout')}}">退出</a></li>
+          {% else %}
+              <li id="nav1"><a href="{{url_for('blog.sy')}}">首页</a></li>
+              <li id="nav2"><a href="{{url_for('blog.login')}}">登录 <span class="sr-only">(current)</span></a></li>
+              <li id="nav3"><a href="{{url_for('blog.register')}}">注册</a></li>
+          {% endif %}
+      </ul>
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<center>
+    {% block content %}   {% endblock %}
+</center>
+{% block echart %}  {% endblock %}
+
+{% block myjs %}   {% endblock %}
+</body>
+</html>

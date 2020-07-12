@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div divbiaoh="2" id="main0" style="position:absolute;display:none;border:1px solid silver;width:500px;height:500px">
+    <img src="/static/morning.jpg" style="width:200px;height:200px">
+</div>
+<center>
+<a yuanyou="2" >显示</a>
+</center>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $("[yuanyou]").hover(function(){
+            showdiv(this,$(this).attr("yuanyou"));
+        },function(){
+            hidediv(this,$(this).attr("yuanyou"));
+        });
+        function showdiv(obj, yuanyou) {
+            var objDiv = $("[divbiaoh='"+yuanyou+"']");
+            $(objDiv).css("display", "block");
+            $(obj).css("cursor", "pointer");
+
+            var e = arguments.callee.caller.arguments[0] || window.event;
+var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+var x = e.pageX || e.clientX + scrollX;
+var y = e.pageY || e.clientY + scrollY;
+var top = y + 5;
+var left = x + 5;
+            $(objDiv).css({
+                'top': top + 'px',
+                'left': left + 'px'
+            });
+        }
+
+        function hidediv(obj, yuanyou) {
+            var objDiv = $("[divbiaoh='"+yuanyou+"']");
+            $(objDiv).css("display", "none");
+        }
+    </script>
+</body>
+</html>
